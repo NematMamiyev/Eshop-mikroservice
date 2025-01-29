@@ -1,0 +1,35 @@
+server:
+  port: 0
+  servlet:
+    context-path: /eshop
+spring:
+  application:
+    name: eshop-warehouse
+  devtools:
+    remote:
+      restart:
+        enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/warehousedb
+    username: root
+    password: root
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 30000
+      connection-timeout: 30000
+      max-lifetime: 1800000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+client:
+  eshop-customer:
+    endpoint: http://localhost:8083/eshop/
+  eshop-notification:
+    endpoint: http://localhost:8085/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
